@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacunas y Medicamentos para Animales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Fallback color */
+            background-image: url(/imagenes/istockphoto-1189999060-612x612.jpg); /* URL de tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Color de fondo semi-transparente */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Vacunas y Medicamentos para Animales</h1>
+
+    <h2>Vacunas para Animales</h2>
+    <input type="text" id="vacunaInput" onkeyup="buscarVacuna()" placeholder="Buscar vacuna...">
+    <table id="vacunaTable">
+        <tr>
+            <th>Vacuna</th>
+            <th>Dosis</th>
+            <th>Valor</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>Rabia</td>
+            <td>Anual</td>
+            <td>$20</td>
+            <td>Protege contra la rabia en animales</td>
+        </tr>
+        <tr>
+            <td>Moquillo</td>
+            <td>Cada 3 años</td>
+            <td>$30</td>
+            <td>Protege contra el virus del moquillo en perros</td>
+        </tr>
+        <tr>
+            <td>Leucemia Felina</td>
+            <td>Anual</td>
+            <td>$25</td>
+            <td>Protege contra el virus de la leucemia en gatos</td>
+        </tr>
+        <tr>
+            <td>Panleucopenia Felina</td>
+            <td>Anual</td>
+            <td>$22</td>
+            <td>Protege contra la panleucopenia en gatos</td>
+        </tr>
+        <tr>
+            <td>Calicivirus Felino</td>
+            <td>Anual</td>
+            <td>$18</td>
+            <td>Protege contra el calicivirus en gatos</td>
+        </tr>
+    </table>
+
+    <h2>Mejores Medicamentos para Animales</h2>
+    <input type="text" id="medicamentoInput" onkeyup="buscarMedicamento()" placeholder="Buscar medicamento...">
+    <table id="medicamentoTable">
+        <tr>
+            <th>Medicamento</th>
+            <th>Uso</th>
+            <th>Valor</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>Advantix</td>
+            <td>Antiparasitario</td>
+            <td>$25</td>
+            <td>Protege contra pulgas y garrapatas en perros</td>
+        </tr>
+        <tr>
+            <td>Frontera</td>
+            <td>Antiparasitario</td>
+            <td>$15</td>
+            <td>Elimina garrapatas, pulgas y piojos en gatos</td>
+        </tr>
+        <tr>
+            <td>Bravecto</td>
+            <td>Antiparasitario</td>
+            <td>$30</td>
+            <td>Protege contra pulgas y garrapatas en perros y gatos</td>
+        </tr>
+        <tr>
+            <td>Milbemax</td>
+            <td>Desparasitante</td>
+            <td>$20</td>
+            <td>Desparasitante de amplio espectro para gatos</td>
+        </tr>
+        <tr>
+            <td>Revolution</td>
+            <td>Antiparasitario</td>
+            <td>$28</td>
+            <td>Protege contra pulgas, ácaros y parásitos intestinales en gatos</td>
+        </tr>
+    </table>
+
+    <button onclick="volverAlIndex()">Volver al Índice</button>
+</div>
+
+<script>
+    function buscarVacuna() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("vacunaInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("vacunaTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function buscarMedicamento() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("medicamentoInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("medicamentoTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function volverAlIndex() {
+        window.location.href = "index.html"; // Reemplaza "index.html" con la ruta de tu página principal
+    }
+</script>
+
+</body>
+</html>
